@@ -1,19 +1,39 @@
-# SELECT Statement
+# Lesson 01: SELECT
 
 ## What is SELECT?
 
 The `SELECT` statement retrieves data from a database table.
 
-Example:
+It is used to choose which columns you want to display in the query result.
+
+## Syntax
 
 ```sql
-SELECT Id, Name
+SELECT
+    column1,
+    column2
+FROM TableName;
+```
+
+## Example
+
+```sql
+SELECT
+    Id,
+    Name
 FROM Customers;
 ```
 
----
+Result:
 
-## Why avoid SELECT *?
+| Id | Name |
+|----|------|
+| 1 | Alice |
+| 2 | Bob |
+
+## Notes
+
+### Avoid `SELECT *`
 
 Instead of selecting every column,
 
@@ -22,7 +42,7 @@ SELECT *
 FROM Customers;
 ```
 
-it is better to retrieve only the columns that are needed.
+it is usually better to retrieve only the columns you need.
 
 Benefits:
 
@@ -31,10 +51,9 @@ Benefits:
 - Easier to read
 - Clearer intent
 
----
+## Key Takeaways
 
-## My Understanding
-
-`SELECT` is used to retrieve data from a table.
-
-I should avoid `SELECT *` unless I truly need every column because selecting only the required columns is more efficient and makes queries easier to understand.
+- `SELECT` retrieves data from a table.
+- Specify only the columns you need whenever possible.
+- Avoid `SELECT *` unless you truly need every column.
+- Selecting fewer columns makes queries more efficient and easier to read.

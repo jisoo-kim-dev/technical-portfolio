@@ -1,102 +1,90 @@
-# Day 12: JOIN Types Summary
+# Lesson 12: LEFT JOIN
 
-## JOIN Family
+## What is LEFT JOIN?
 
-| JOIN | Keeps | Common Use |
-|------|-------|------------|
-| INNER JOIN | Matching rows only | ⭐⭐⭐⭐⭐ |
-| LEFT JOIN | All rows from left table | ⭐⭐⭐⭐⭐ |
-| RIGHT JOIN | All rows from right table | ⭐⭐ |
-| FULL OUTER JOIN | All rows from both tables | ⭐ |
+A `LEFT JOIN` returns all rows from the left table and the matching rows from the right table.
 
----
+If there is no matching row in the right table, the result contains `NULL` values for the right table's columns.
 
-## INNER JOIN
-
-Returns only rows that exist in both tables.
+## Syntax
 
 ```sql
-SELECT *
-FROM Customers c
-JOIN Orders o
-ON c.CustomerID = o.CustomerID;
+SELECT
+    table1.column1,
+    table2.column2
+FROM Table1
+LEFT JOIN Table2
+ON table1.common_column = table2.common_column;
 ```
 
----
+## Example
 
-## LEFT JOIN
-
-Returns every row from the left table.
+Return all customers and their orders:
 
 ```sql
-SELECT *
-FROM Customers c
-LEFT JOIN Orders o
-ON c.CustomerID = o.CustomerID;
+SELECT
+    Customers.CustomerName,
+    Orders.Product
+FROM Customers
+LEFT JOIN Orders
+ON Customers.CustomerID = Orders.CustomerID;
 ```
 
-Unmatched rows from Orders become NULL.
+This query returns every customer, even if they have not placed an order.
 
----
+Result:
 
-## RIGHT JOIN
+| CustomerName | Product |
+|--------------|---------|
+| Alice | Laptop |
+| Bob | Mouse |
+| Charlie | NULL |
 
-Returns every row from the right table.
+## Notes
+
+### `INNER JOIN` vs `LEFT JOIN`
+
+| JOIN | Returned Rows |
+|------|---------------|
+| `INNER JOIN` | Only matching rows |
+| `LEFT JOIN` | All rows from the left table and matching rows from the right table |
+
+### `RIGHT JOIN`
+
+A `RIGHT JOIN` returns all rows from the right table and the matching rows from the left table.
+
+It is equivalent to swapping the table order and using a `LEFT JOIN`.
+
+### `FULL OUTER JOIN`
+
+A `FULL OUTER JOIN` returns all rows from both tables.
+
+Rows without matches are filled with `NULL` values.
+
+> **Note:** MySQL does not support `FULL OUTER JOIN` directly.
+
+A common workaround is to combine a `LEFT JOIN` and a `RIGHT JOIN` using `UNION`.
 
 ```sql
-SELECT *
-FROM Customers c
-RIGHT JOIN Orders o
-ON c.CustomerID = o.CustomerID;
-```
-
-Usually replaced by swapping table order and using LEFT JOIN.
-
----
-
-## FULL OUTER JOIN
-
-Returns every row from both tables.
-
-```sql
-SELECT *
-FROM Customers c
-FULL OUTER JOIN Orders o
-ON c.CustomerID = o.CustomerID;
-```
-
-MySQL does not support FULL OUTER JOIN directly.
-
-Equivalent idea:
-
-```sql
-SELECT *
-FROM Customers c
-LEFT JOIN Orders o
-ON c.CustomerID = o.CustomerID
+SELECT
+    *
+FROM Customers
+LEFT JOIN Orders
+ON Customers.CustomerID = Orders.CustomerID
 
 UNION
 
-SELECT *
-FROM Customers c
-RIGHT JOIN Orders o
-ON c.CustomerID = o.CustomerID;
+SELECT
+    *
+FROM Customers
+RIGHT JOIN Orders
+ON Customers.CustomerID = Orders.CustomerID;
 ```
 
----
+## Key Takeaways
 
-## Which JOIN should I use?
-
-- Need only matching rows → INNER JOIN
-- Keep all rows from left table → LEFT JOIN
-- Keep all rows from right table → RIGHT JOIN
-- Keep all rows from both tables → FULL OUTER JOIN
-
-## Interview Tip
-
-For most Data Analyst roles:
-
-1. INNER JOIN ⭐⭐⭐⭐⭐
-2. LEFT JOIN ⭐⭐⭐⭐⭐
-3. RIGHT JOIN (know the concept)
-4. FULL OUTER JOIN (know the concept and MySQL limitation)
+- `LEFT JOIN` returns every row from the left table.
+- Unmatched rows from the right table become `NULL`.
+- `RIGHT JOIN` is the opposite of `LEFT JOIN`.
+- `FULL OUTER JOIN` returns every row from both tables.
+- MySQL does not support `FULL OUTER JOIN` directly.

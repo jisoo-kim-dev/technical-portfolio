@@ -1,91 +1,107 @@
-# SQL ORDER BY
+# Lesson 03: ORDER BY
 
-## What is it?
+## What is ORDER BY?
 
-`ORDER BY` sorts the rows returned by a SQL query.
+The `ORDER BY` clause sorts the rows returned by a SQL query.
 
 It can sort values in ascending or descending order.
 
-- `ASC` means ascending order.
-- `DESC` means descending order.
-- `ASC` is the default sorting order and can be omitted.
-
----
-
 ## Syntax
 
+Ascending order (default):
+
 ```sql
-SELECT column_name
-FROM table_name
-ORDER BY column_name ASC;
+SELECT
+    column1,
+    column2
+FROM TableName
+ORDER BY column1;
 ```
 
 Descending order:
 
 ```sql
-SELECT column_name
-FROM table_name
-ORDER BY column_name DESC;
+SELECT
+    column1,
+    column2
+FROM TableName
+ORDER BY column1 DESC;
 ```
-
----
 
 ## Example
 
 Sort customers from youngest to oldest:
 
 ```sql
-SELECT *
+SELECT
+    CustomerName,
+    Age
 FROM Customers
 ORDER BY Age;
 ```
 
+Result:
+
+| CustomerName | Age |
+|--------------|-----|
+| David | 22 |
+| Bob | 25 |
+| Alice | 31 |
+
 Sort customers from oldest to youngest:
 
 ```sql
-SELECT *
+SELECT
+    CustomerName,
+    Age
 FROM Customers
 ORDER BY Age DESC;
 ```
 
----
+Result:
 
-## Sorting by Multiple Columns
+| CustomerName | Age |
+|--------------|-----|
+| Alice | 31 |
+| Bob | 25 |
+| David | 22 |
+
+## Notes
+
+### Default sorting order
+
+`ASC` (ascending) is the default sorting order and can be omitted.
 
 ```sql
-SELECT *
+ORDER BY Age;
+```
+
+is equivalent to
+
+```sql
+ORDER BY Age ASC;
+```
+
+### Sorting by multiple columns
+
+```sql
+SELECT
+    CustomerName,
+    Age
 FROM Customers
-ORDER BY Age DESC, CustomerName ASC;
+ORDER BY
+    Age DESC,
+    CustomerName ASC;
 ```
 
 SQL first sorts by `Age` in descending order.
-If multiple customers have the same age, SQL sorts them alphabetically by `CustomerName`.
 
----
+If multiple rows have the same age, it then sorts those rows alphabetically by `CustomerName`.
 
-## Best Practice
+## Key Takeaways
 
-- `ASC` is optional because it is the default.
-- Write `DESC` explicitly.
-- When using multiple columns, specifying `ASC` or `DESC` makes the query easier to read.
-
----
-
-## Interview Tip
-
-The default sorting direction of `ORDER BY` is `ASC`.
-
----
-
-## My Understanding
-
-`ORDER BY` changes the order of query results.
-
-- `ASC` sorts from smallest to largest (A → Z).
-- `DESC` sorts from largest to smallest (Z → A).
-
-When multiple columns are listed, SQL sorts by the first column and uses the following columns to break ties.
-
----
-
-Part of the Technical Portfolio.
+- `ORDER BY` sorts query results.
+- `ASC` sorts in ascending order and is the default.
+- `DESC` sorts in descending order.
+- Multiple columns can be used for sorting.
+- SQL sorts by the first column before using additional columns to break ties.

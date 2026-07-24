@@ -1,61 +1,81 @@
-# SQL LIMIT
+# Lesson 04: LIMIT
 
-## What is it?
+## What is LIMIT?
 
-`LIMIT` restricts the number of rows returned by a query.
+The `LIMIT` clause restricts the number of rows returned by a query.
 
----
+It is commonly used to preview data or return only the top results.
 
 ## Syntax
 
 ```sql
-SELECT column_name
-FROM table_name
+SELECT
+    column1,
+    column2
+FROM TableName
 LIMIT number;
 ```
 
----
-
 ## Example
 
-Return the first five rows:
+Return the first five customers:
 
 ```sql
-SELECT *
+SELECT
+    CustomerName,
+    Age
 FROM Customers
 LIMIT 5;
 ```
 
+Result:
+
+| CustomerName | Age |
+|--------------|-----|
+| Alice | 31 |
+| Bob | 25 |
+| Charlie | 40 |
+| David | 22 |
+| Emma | 35 |
+
 Return the oldest two customers:
 
 ```sql
-SELECT *
+SELECT
+    CustomerName,
+    Age
 FROM Customers
 ORDER BY Age DESC
 LIMIT 2;
 ```
 
----
+Result:
 
-## Best Practice
+| CustomerName | Age |
+|--------------|-----|
+| Charlie | 40 |
+| Emma | 35 |
 
-- Use `LIMIT` when previewing large tables.
-- Combine `ORDER BY` with `LIMIT` to return the top or bottom records.
+## Notes
 
----
+### Using `LIMIT` with `ORDER BY`
 
-## Interview Tip
+`LIMIT` is often combined with `ORDER BY` to return the top or bottom records.
 
-`LIMIT` returns only the specified number of rows.
+```sql
+SELECT
+    CustomerName,
+    Age
+FROM Customers
+ORDER BY Age DESC
+LIMIT 3;
+```
 
----
+This query returns the three oldest customers.
 
-## My Understanding
+## Key Takeaways
 
-`LIMIT` controls how many rows are returned.
-
-It is commonly used with `ORDER BY` to retrieve the top or bottom records.
-
----
-
-Part of the Technical Portfolio.
+- `LIMIT` restricts the number of rows returned.
+- It is useful for previewing large tables.
+- `LIMIT` is commonly used with `ORDER BY`.
+- `ORDER BY` determines which rows are returned before `LIMIT` is applied.

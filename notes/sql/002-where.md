@@ -1,29 +1,58 @@
-# WHERE
+# Lesson 02: WHERE
 
 ## What is WHERE?
 
 The `WHERE` clause filters rows based on specific conditions.
 
-It allows me to retrieve only the records that match the criteria I specify.
+It allows you to retrieve only the records that match the specified criteria.
 
----
+## Syntax
+
+```sql
+SELECT
+    column1,
+    column2
+FROM TableName
+WHERE condition;
+```
 
 ## Example
 
 ```sql
-SELECT *
+SELECT
+    CustomerName,
+    Age
 FROM Customers
 WHERE Age < 30;
 ```
 
----
+Result:
 
-## My Understanding
+| CustomerName | Age |
+|--------------|-----|
+| Bob          | 25  |
+| David        | 22  |
 
-The `WHERE` clause is used to filter rows in a database.
+## Notes
 
-Instead of retrieving every record, I can specify conditions to return only the data I need.
+### Comparison operators
 
----
+The `WHERE` clause commonly uses comparison operators to filter data.
 
-Part of the Technical Portfolio.
+| Operator | Meaning |
+|----------|---------|
+| `=` | Equal to |
+| `!=` or `<>` | Not equal to |
+| `>` | Greater than |
+| `<` | Less than |
+| `>=` | Greater than or equal to |
+| `<=` | Less than or equal to |
+
+These operators can be used with numbers, text, and dates.
+
+## Key Takeaways
+
+- `WHERE` filters rows based on a condition.
+- Only rows that satisfy the condition are returned.
+- Comparison operators are commonly used with `WHERE`.
+- `WHERE` helps retrieve only the data you need.

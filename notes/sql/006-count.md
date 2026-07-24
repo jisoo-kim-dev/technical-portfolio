@@ -1,38 +1,90 @@
-# Day 06: COUNT
+# Lesson 06: COUNT
 
 ## What is COUNT?
 
-`COUNT()` returns the number of rows.
+The `COUNT()` function returns the number of rows or values that match a specified condition.
 
-## Basic Syntax
+It is commonly used to count records in a table.
+
+## Syntax
+
+Count all rows:
 
 ```sql
-SELECT COUNT(*)
+SELECT
+    COUNT(*)
+FROM TableName;
+```
+
+Count non-NULL values:
+
+```sql
+SELECT
+    COUNT(column_name)
+FROM TableName;
+```
+
+Count unique non-NULL values:
+
+```sql
+SELECT
+    COUNT(DISTINCT column_name)
+FROM TableName;
+```
+
+## Example
+
+Count all customers:
+
+```sql
+SELECT
+    COUNT(*)
 FROM Customers;
 ```
 
-This counts every row in the table.
+This query returns the total number of rows in the `Customers` table.
 
-## COUNT(column)
+Result:
+
+| COUNT(*) |
+|----------:|
+| 8 |
+
+## Notes
+
+### `COUNT(*)`
 
 ```sql
-SELECT COUNT(Age)
+SELECT
+    COUNT(*)
 FROM Customers;
 ```
 
-This counts only rows where `Age` is NOT NULL.
+Counts **every row** in the table, including rows that contain `NULL` values.
 
-## COUNT(DISTINCT)
+### `COUNT(column_name)`
 
 ```sql
-SELECT COUNT(DISTINCT Country)
+SELECT
+    COUNT(Age)
 FROM Customers;
 ```
 
-This counts the number of unique countries.
+Counts only rows where `Age` is **NOT NULL**.
 
-## Summary
+### `COUNT(DISTINCT column_name)`
 
-- `COUNT(*)` → counts all rows
-- `COUNT(column)` → counts non-NULL values
-- `COUNT(DISTINCT column)` → counts unique non-NULL values
+```sql
+SELECT
+    COUNT(DISTINCT Country)
+FROM Customers;
+```
+
+Counts the number of **unique non-NULL** values in the specified column.
+
+## Key Takeaways
+
+- `COUNT(*)` counts all rows in a table.
+- `COUNT(column_name)` counts only non-NULL values.
+- `COUNT(DISTINCT column_name)` counts unique non-NULL values.
+- `COUNT()` is commonly used to summarize data.
