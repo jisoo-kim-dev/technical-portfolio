@@ -4,11 +4,11 @@ Technical notes covering computer science, SQL, Python, Git, and statistics.
 
 ## 📚 Categories
 
-- 💻 Computer Science
-- 🗄️ SQL
-- 🐍 Python
-- 🌱 Git
-- 📊 Statistics
+- 💻 [Computer Science](cs/)
+- 🗄️ [SQL](sql/)
+- 🐍 [Python](python/)
+- 🌱 [Git](git/)
+- 📊 [Statistics](statistics/)
 
 ## 📝 SQL Lessons
 
