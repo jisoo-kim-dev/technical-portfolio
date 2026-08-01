@@ -104,8 +104,8 @@ FROM Orders;
 
 -- 9. Explain in one sentence:
 -- What is the difference between UNION and UNION ALL?
-UNION removes duplicates, whereas UNION ALL keeps duplicates and is usually faster.
+-- UNION removes duplicates, whereas UNION ALL keeps duplicates and is usually faster.
 
 -- 10. Explain in one sentence:
 -- What is the difference between UNION and JOIN?
-UNION combines rows vertically, whereas JOIN combines columns horizontally.
+-- UNION combines rows vertically, whereas JOIN combines columns horizontally.
