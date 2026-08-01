@@ -25,5 +25,14 @@ Technical notes covering computer science, SQL, Python, Git, and statistics.
 - [Lesson 11: INNER JOIN](sql/011-inner-join.md)
 - [Lesson 12: LEFT JOIN](sql/012-left-join.md)
 - [Lesson 13: CASE](sql/013-case.md)
+- [Lesson 14: IS NULL & IS NOT NULL](sql/014-is-null.md)
+- [Lesson 15: IN & NOT IN](sql/015-in-and-not-in.md)
+- [Lesson 16: BETWEEN](sql/016-between.md)
+- [Lesson 17: LIKE](sql/017-like.md)
+- [Lesson 18: Aliases](sql/018-aliases.md)
+- [Lesson 19: COALESCE](sql/019-coalesce.md)
+- [Lesson 20: UNION & UNION ALL](sql/020-union-and-union-all.md)
+- [Lesson 21: Subqueries](sql/021-subqueries.md)
+- [Lesson 22: CTE](sql/022-cte.md)
 
 > 🚧 More lessons will be added as I continue learning.
